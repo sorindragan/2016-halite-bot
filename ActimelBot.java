@@ -6,10 +6,10 @@ public class ActimelBot {
 	private static HashMap<Direction, Site> getNeighbours(GameMap gameMap, int x, int y) {
 		HashMap<Direction, Site> neighbours = new HashMap<>();
 
-		neighbours.put(Direction.WEST, gameMap.getLocation((x-1+gameMap.width)%gameMap.width, y).getSite());
-		neighbours.put(Direction.EAST, gameMap.getLocation((x+1) % gameMap.width,y).getSite());
-		neighbours.put(Direction.NORTH, gameMap.getLocation(x,(y-1 + gameMap.height) % gameMap.height).getSite());
-		neighbours.put(Direction.SOUTH, gameMap.getLocation(x,(y+1) % gameMap.height).getSite());
+		neighbours.put(Direction.WEST, gameMap.getLocation((x - 1 + gameMap.width) % gameMap.width, y).getSite());
+		neighbours.put(Direction.EAST, gameMap.getLocation((x + 1) % gameMap.width,y).getSite());
+		neighbours.put(Direction.NORTH, gameMap.getLocation(x,(y - 1 + gameMap.height) % gameMap.height).getSite());
+		neighbours.put(Direction.SOUTH, gameMap.getLocation(x,(y + 1) % gameMap.height).getSite());
 
 		return neighbours;
 	}
@@ -37,7 +37,6 @@ public class ActimelBot {
 				if (site.production == 0) {
 					return Double.MAX_VALUE;
 				}
-
 				return distance;
 			}
 		}
@@ -197,7 +196,7 @@ public class ActimelBot {
 						if (site.strength < 4 * site.production) {
 							moves.add(new Move(location, Direction.STILL));
 							// three-quarters of full strength
-						} else if (site.strength > 255*3/4) {
+						} else if (site.strength > 255 * 3 / 4) {
 							// don't merge big cells
 							moves.add(new Move(location, getToClosestBorder(gameMap, myID
 									, location)));
